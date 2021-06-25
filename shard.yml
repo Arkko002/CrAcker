@@ -12,6 +12,9 @@ dependencies:
   ssh2:
     github: spider-gazelle/ssh2.cr
     branch: master
+  commander:
+    github: mrrooijen/commander
+    version: ~> 0.4.0
 
 crystal: 1.0.0
 

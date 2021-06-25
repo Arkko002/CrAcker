@@ -1,5 +1,9 @@
 version: 2.0
 shards:
+  commander:
+    git: https://github.com/mrrooijen/commander.git
+    version: 0.4.0
+
   ssh2:
     git: https://github.com/spider-gazelle/ssh2.cr.git
     version: 1.5.2+git.commit.6e270a8d71ad8e01db519c153183d9710f2870d1
