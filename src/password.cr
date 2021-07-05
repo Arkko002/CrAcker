@@ -1,7 +1,7 @@
 require "commander"
 require "socket"
-require "./methods/**"
-require "./target/**"
+require "./password/methods/**"
+require "./password/target/**"
 
 module Cracker::CLI
 	extend self
@@ -10,7 +10,7 @@ module Cracker::CLI
 		cli = Commander::Command.new do |cmd|
 			cmd.use = "crack"
 			cmd.long = "crack a password or hash"
-			
+
 			cmd.commands.add do |cmd|
 				cmd.use = "password"
 				cmd.long = "crack the password on provided service"
@@ -62,7 +62,7 @@ module Cracker::CLI
 						flag.description = "port of the ssh service"
 					end
 
-					cmd.run do |options, arguments|	
+					cmd.run do |options, arguments|
 						address = Socket::IPAddress.new(options.string["address"], options.int["port"].as(Int32))
 						target = Cracker::Target::SSH.new(address, options.string["username"], @@method.as(Cracker::Methods::CrackingMethod))
 
@@ -96,7 +96,7 @@ module Cracker::CLI
 					flag.default = ""
 					flag.description = "rainbow table to use"
 				end
-				
+
 				cmd.run do |options, arguments|
 					# TODO Validate options and arguments
 					# TODO Run method

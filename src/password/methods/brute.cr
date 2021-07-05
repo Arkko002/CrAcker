@@ -3,7 +3,7 @@ require "./cracking_method.cr"
 
 module Cracker::Methods
 	class Brute < CrackingMethod
-		def initalize(@length : Int16, @upper : Bool, @lower : Bool, @symbols : Bool, @numbers : Bool)
+		def initialize(@length : Int16, @upper : Bool, @lower : Bool, @symbols : Bool, @numbers : Bool)
 		end
 
 		def crack : Array(String)
@@ -24,7 +24,13 @@ module Cracker::Methods
 				password_source += BruteHelpers.symbols
 			end
 
-			possible_passwords = password_source.chars.combinations @length
+			current_length = 1
+			possible_passwords = Array(Array(Char)).new
+			while current_length <= @length
+				possible_passwords = possible_passwords + password_source.chars.permutations(current_length)
+				current_length += 1
+			end
+
 			passwords = [] of String
 
 			# TODO better char array to str

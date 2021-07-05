@@ -2,7 +2,7 @@ require "../methods/cracking_method.cr"
 
 module Cracker::Target
 	abstract class CrackingTarget
-		def initalize(@method : CrackingMethod)
+		def initialize(@method : CrackingMethod)
 		end
 
 		abstract def start_cracking
